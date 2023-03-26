@@ -8,14 +8,14 @@ function Page1() {
 
   return (
     <Center>
-  <Box  maxW="container.2xl">
-    <Flex flexDirection="row" justifyContent="space-between" alignItems="center">
-      <Grid>
+    <Box p={10} alignItems={'center'} mt={40} w='7xl' >
+    <Flex flexDirection={{ base: 'column', md: 'row' }} justifyContent="space-between" alignItems="center">
+      <Grid justifyContent="space-between">
         <Text
           as="h1"
-          fontSize="40px"
+          fontSize={{base: '40px', md: '40px', lg: '45px'}}
           fontWeight="bold"
-          bgGradient="linear(to-r, blue.600, pink.600)"
+          bgGradient="linear(to-r, teal.500, cyan.400)"
           bgClip="text"
         >
           Olá seja bem-vindo!
@@ -23,7 +23,7 @@ function Page1() {
 
         <Text
           as="h1"
-          fontSize="40px"
+          fontSize={{base: '40px', md: '40px', lg: '45px'}}
           fontWeight="bold"
           bgGradient="linear(to-r, #6F062B, pink.600)"
           bgClip="text"
@@ -34,7 +34,9 @@ function Page1() {
 
       <Avatar
         src="https://avatars.githubusercontent.com/u/89952697?s=400&u=fdd7f233a4e2a4cd2c04d24bec1ed5272816f93b&v=4"
-        size="20px"
+        w={{base: '300px', md: '300px', lg: '300px'}}
+        h={{base: '300px', md: '300px', lg: '300px'}}
+        mt={{ base: '150px', md: '0' }}
         bgGradient="linear(to-tr, blue.400,purple.500)"
         colorScheme="purple"
         borderColor="purple.200"
@@ -42,7 +44,8 @@ function Page1() {
       />
     </Flex>
   </Box>
-</Center>
+  </Center>
+
   );
 }
 

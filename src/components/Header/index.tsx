@@ -1,21 +1,6 @@
+import { Avatar, Box, Button, Center, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, MenuDivider, Link, Text, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { HiOutlineCog, HiOutlineLogout } from 'react-icons/hi';
 import { ReactNode } from 'react';
-import {
-  Box,
-  Flex,
-  Avatar,
-  Link,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
-  useColorModeValue,
-  Stack,
-  useColorMode,
-  Center,
-} from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 const NavLink = ({ children }: { children: ReactNode }) => (
@@ -34,54 +19,79 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <>
-      <Box borderRadius="3xl" bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-        <Flex  h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Box   ml={5} >Ariano Morais </Box>
+    <Center>
+      <Box
+        w="8xl"
+        mt={25}
+        borderRadius="3xl"
+        bg={useColorModeValue('white', 'gray.700')}
+        boxShadow="lg"
+        p={4}
+      >
+        <Flex justify="space-between" alignItems="center">
+          <Box marginRight="auto" fontWeight="bold" fontSize="2xl">
+            Ariano Morais
+          </Box>
 
-          <Flex alignItems={'center'}>
-            <Stack direction={'row'} spacing={7}>
-              <Button onClick={toggleColorMode}>
-                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-              </Button>
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              icon={
+                <Avatar
+                  size="sm"
+                  src="https://avatars.githubusercontent.com/u/89952697?s=400&u=fdd7f233a4e2a4cd2c04d24bec1ed5272816f93b&v=4"
+                  
+                />
+              }
+              variant="unstyled"
+              aria-label="User Options"
+              mr={2}
+            />
 
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={'full'}
-                  variant={'link'}
-                  cursor={'pointer'}
-                  minW={0}>
-                  <Avatar
-                    size={'sm'}
-                    src={'https://avatars.dicebear.com/api/male/username.svg'}
-                  />
-                </MenuButton>
-                <MenuList alignItems={'center'}>
-                  <br />
-                  <Center>
-                    <Avatar
-                      size={'2xl'}
-                      src={'https://avatars.dicebear.com/api/male/username.svg'}
-                    />
-                  </Center>
-                  <br />
-                  <Center>
-                    <p>Username</p>
-                  </Center>
-                  <br />
-                  <MenuDivider />
-                  <MenuItem>Your Servers</MenuItem>
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
-                </MenuList>
-              </Menu>
-            </Stack>
-          </Flex>
+            <MenuList minWidth="150px">
+              <Center>
+                <Avatar
+                  size="2xl"
+                  src="https://avatars.githubusercontent.com/u/89952697?s=400&u=fdd7f233a4e2a4cd2c04d24bec1ed5272816f93b&v=4"
+                 
+                />
+              </Center>
+
+              <Box px={3} py={2}>
+                <Text fontSize="xl" fontWeight="bold">
+                  Ariano Morais
+                </Text>
+                <Text fontSize="md" color="gray.600">
+                  ariano.morais@gmail.com
+                </Text>
+              </Box>
+
+              <MenuDivider />
+
+              <MenuItem
+                icon={<HiOutlineCog />}
+                minH="48px"
+                onClick={() => console.log('Account Settings')}
+              >
+                Account Settings
+              </MenuItem>
+              <MenuItem
+                icon={<HiOutlineLogout />}
+                minH="48px"
+                onClick={() => console.log('Logout')}
+              >
+                Logout
+              </MenuItem>
+            </MenuList>
+          </Menu>
+
+          <Button onClick={toggleColorMode} variant="ghost">
+            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+          </Button>
         </Flex>
       </Box>
-    </>
+    </Center>
   );
 }
